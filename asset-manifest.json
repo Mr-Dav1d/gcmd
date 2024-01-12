@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/gcmd/static/css/main.465297d1.css",
+    "main.js": "/gcmd/static/js/main.56e6c167.js",
+    "index.html": "/gcmd/index.html",
+    "main.465297d1.css.map": "/gcmd/static/css/main.465297d1.css.map",
+    "main.56e6c167.js.map": "/gcmd/static/js/main.56e6c167.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.465297d1.css",
+    "static/js/main.56e6c167.js"
+  ]
+}
