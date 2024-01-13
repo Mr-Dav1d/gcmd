@@ -1,3 +1,15 @@
+import play from "../media/play.svg";
+import watchlist from "../media/watchlist.svg";
+
+const getLogoSource = (logo) => {
+  const logoMapping = {
+    play,
+    watchlist,
+  };
+
+  return logoMapping[logo];
+};
+
 export default function Button({
   children,
   color,
@@ -6,6 +18,8 @@ export default function Button({
   classN,
   onClick,
 }) {
+  const logoSource = getLogoSource(logo);
+
   return (
     <button
       className={classN}
@@ -16,7 +30,7 @@ export default function Button({
       }}
       onClick={onClick}
     >
-      <img className="logo" src={`/${logo}.svg`} alt={logo} />
+      <img className="logo" src={logoSource} alt={logo} />
       {children}
     </button>
   );

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ScrollButton from "../ScrollButton.js";
+import star from "../../media/star.svg";
 
 export default function NewMovieList({ id }) {
   const [movies, setMovies] = useState([]);
@@ -73,7 +74,7 @@ function MovieCard({ link, title, rating, genreIds, genres }) {
         <div style={{ paddingLeft: "3%", paddingBottom: "3%" }}>
           <h3 style={{ marginTop: "15px", marginBottom: "3px" }}>{title}</h3>
           <div style={{ display: "flex", gap: "10px" }}>
-            <img className="logo" src="/star.svg" alt="star" />
+            <img className="logo" src={star} alt="star" />
             <p>
               {rating} | {genreNames.join(", ")}
             </p>

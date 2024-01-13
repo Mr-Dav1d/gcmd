@@ -72,7 +72,7 @@ export default function TopHome() {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
-          initial={{ y: "100%" }}
+          initial={{ y: "0%" }}
           animate={{ y: 0 }}
           exit={{ y: "-100%" }}
           transition={{ duration: 1 }}

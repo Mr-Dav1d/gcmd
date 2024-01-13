@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import searchIcon from "../media/search-icon.svg";
+import menu from "../media/menu.svg";
 
 export default function NavBar() {
   return (
@@ -9,7 +11,7 @@ export default function NavBar() {
         <Navigation />
         <img
           className="logo"
-          src="/search-icon.svg"
+          src={searchIcon}
           alt="search"
           style={{ marginRight: "5%" }}
         />
@@ -20,7 +22,7 @@ export default function NavBar() {
         <div style={{ display: "flex" }}>
           <img
             className="logo"
-            src="/search-icon.svg"
+            src={searchIcon}
             alt="search"
             style={{ marginRight: "5%" }}
           />
@@ -59,7 +61,7 @@ function MobileNavigation({ routeName }) {
   return (
     <div>
       <button className="nav-button" onClick={toggleDropdown}>
-        <img className="logo" src="/menu.svg" alt="menu" />
+        <img className="logo" src={menu} alt="menu" />
       </button>
       {isDropdownVisible && (
         <div className="mobile-dropdown">
@@ -79,7 +81,7 @@ function Button({ children, routeName }) {
   return (
     <button
       onClick={() => {
-        navigate(routeName);
+        navigate(`/gcmd${routeName}`);
       }}
       className="nav-button"
     >
