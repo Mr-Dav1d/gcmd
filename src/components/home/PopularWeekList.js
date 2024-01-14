@@ -4,6 +4,8 @@ import ScrollButton from "../ScrollButton.js";
 import Button from "../Button.js";
 import star from "../../media/star.svg";
 
+import { useNavigate } from "react-router-dom";
+
 export default function PopularWeekList({ id }) {
   const [movies, setMovies] = useState([]);
   const [genres, setGenres] = useState({});
@@ -78,6 +80,7 @@ export default function PopularWeekList({ id }) {
             rating={Number(movie.vote_average.toFixed(1))}
             genres={genres}
             trailerLink={movie.trailerLink}
+            id={movie.id}
           />
         ))}
       </div>
@@ -93,11 +96,16 @@ function MovieCardSquare({
   rating,
   genres,
   trailerLink,
+  id,
 }) {
   const genreNames = genreIds.map((id) => genres[id] || "");
+  let navigate = useNavigate();
 
   return (
-    <div className="movie-card-square">
+    <div
+      className="movie-card-square"
+      onClick={() => navigate(`/gcmd/movie/${id}`)}
+    >
       <div className="poster-square">
         <img className="star" src={link} alt="poster" />
         <div className="card-info-square">

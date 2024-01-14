@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 import Button from "../Button.js";
+import { useNavigate } from "react-router-dom";
 
 const apiKey = "225e69e6fd6663b3c629a8ea6adf8d7c";
 const API_URL_TOP = `https://api.themoviedb.org/3/movie/upcoming?&api_key=${apiKey}&page=1`;
@@ -12,6 +13,8 @@ export default function TopHome() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedDot, setSelectedDot] = useState(0);
   const [trailerLink, setTrailerLink] = useState(null);
+  const [apologyMessage, setApologyMessage] = useState(null);
+  let navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,6 +80,7 @@ export default function TopHome() {
           exit={{ y: "-100%" }}
           transition={{ duration: 1 }}
           className="banner-container"
+          onClick={() => navigate(`/gcmd/movie/${currentMovie.id}`)}
         >
           <img
             className="banner"

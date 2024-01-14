@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ScrollButton from "../ScrollButton.js";
 import star from "../../media/star.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function ContentList({ contentType, id }) {
   const [contentData, setContentData] = useState([]);
@@ -46,6 +47,8 @@ export default function ContentList({ contentType, id }) {
               rating={Number(content.vote_average.toFixed(1))}
               genreIds={content.genre_ids}
               genres={genres}
+              id={content.id}
+              contentType={contentType}
             />
           ))}
         </div>
@@ -59,6 +62,8 @@ export default function ContentList({ contentType, id }) {
               rating={Number(content.vote_average.toFixed(1))}
               genreIds={content.genre_ids}
               genres={genres}
+              id={content.id}
+              contentType={contentType}
             />
           ))}
         </div>
@@ -68,13 +73,25 @@ export default function ContentList({ contentType, id }) {
   );
 }
 
-function ContentCard({ link, title, rating, genreIds, genres }) {
+function ContentCard({
+  link,
+  title,
+  rating,
+  genreIds,
+  genres,
+  id,
+  contentType,
+}) {
+  let navigate = useNavigate();
   const genreNames = genreIds
     .map((id) => (genres[id] !== undefined ? genres[id] : ""))
     .filter((genre) => genre !== "");
 
   return (
-    <div className="content-card">
+    <div
+      className="content-card"
+      onClick={() => navigate(`/gcmd/${contentType}/${id}`)}
+    >
       <div className="poster-content">
         <img className="content-img" src={link} alt="poster" />
         <div className="card-info-content">

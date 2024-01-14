@@ -10,7 +10,7 @@ export default function App() {
       <NavBar />
       <Routes>
         <Route path="/gcmd" element={<Home />} />
-        <Route path="/gcmd/test" element={<Movie />} />
+        <Route path="/gcmd/:type/:id" element={<Movie />} />
       </Routes>
     </Router>
   );

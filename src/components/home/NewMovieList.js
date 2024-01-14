@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ScrollButton from "../ScrollButton.js";
 import star from "../../media/star.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function NewMovieList({ id }) {
   const [movies, setMovies] = useState([]);
@@ -53,6 +54,7 @@ export default function NewMovieList({ id }) {
               rating={Number(movie.vote_average.toFixed(1))}
               genreIds={movie.genre_ids.slice(0, 3)}
               genres={genres}
+              id={movie.id}
             />
           ))}
         </div>
@@ -62,11 +64,12 @@ export default function NewMovieList({ id }) {
   );
 }
 
-function MovieCard({ link, title, rating, genreIds, genres }) {
+function MovieCard({ link, title, rating, genreIds, genres, id }) {
   const genreNames = genreIds.map((id) => genres[id] || "");
+  let navigate = useNavigate();
 
   return (
-    <div className="movie-card">
+    <div className="movie-card" onClick={() => navigate(`/gcmd/movie/${id}`)}>
       <div className="poster">
         <img src={link} alt="poster" />
       </div>
