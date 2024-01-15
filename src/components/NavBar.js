@@ -190,7 +190,7 @@ function Navigation() {
       <div className="navigation desktop">
         <Button routeName="/">Home</Button>
         <Button routeName="/discover">Discover</Button>
-        <Button routeName="/release">Movie Release</Button>
+        <Button routeName="/ReleaseDate">Movie Release</Button>
         <Button routeName="/test">Test</Button>
         <Button routeName="/about">About</Button>
       </div>
@@ -218,7 +218,7 @@ function MobileNavigation({ routeName }) {
         <div className="mobile-dropdown">
           <Button routeName="/">Home</Button>
           <Button routeName="/discover">Discover</Button>
-          <Button routeName="/release">Movie Release</Button>
+          <Button routeName="/ReleaseDate">Movie Release</Button>
           <Button routeName="/test">Test</Button>
           <Button routeName="/about">About</Button>
         </div>
