@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import searchIcon from "../media/search-icon.svg";
 import menu from "../media/menu.svg";
 import axios from "axios";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 export default function NavBar() {
   const [isSearchOpen, setSearchOpen] = useState(false);
@@ -11,17 +14,30 @@ export default function NavBar() {
   const IMG_PATH = "https://image.tmdb.org/t/p/w1280/";
   const navigate = useNavigate();
 
+  const schema = yup.object().shape({
+    query: yup.string().required("Input is required"),
+  });
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    reset, // Add the reset function
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
   const toggleSearch = () => {
     setSearchOpen(!isSearchOpen);
-    if (isSearchOpen === false) {
+    if (!isSearchOpen) {
       setSearchResults([]);
     }
   };
 
-  const handleSearch = async (query) => {
+  const handleSearch = async (data) => {
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${query}`
+        `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${data.query}`
       );
 
       const filteredResults = response.data.results.filter(
@@ -39,16 +55,9 @@ export default function NavBar() {
   const handleResultClick = (id, media_type) => {
     console.log("Clicked on result with ID:", id);
     setSearchOpen(false);
-    setSearchResults([]);
+    reset(); // Reset the form when a result is clicked
     navigate(`/gcmd/${media_type}/${id}`);
-    //below code doesnt work on github pages
-    // window.location.reload();
-    // window.scrollTo({
-    //   top: 0,
-    //   behavior: "smooth",
-    // });
   };
-
   return (
     <>
       <div className="nav-bar desktop">
@@ -80,12 +89,22 @@ export default function NavBar() {
       {/* Search Input */}
       {isSearchOpen && (
         <div className="search-input">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="search-field"
-            onChange={(e) => handleSearch(e.target.value)}
-          />
+          <form onSubmit={handleSubmit(handleSearch)}>
+            <Controller
+              name="query"
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <input
+                  {...field}
+                  type="text"
+                  placeholder="Search..."
+                  className="search-field"
+                />
+              )}
+            />
+            {errors.query && <p>{errors.query.message}</p>}
+          </form>
           {searchResults.length > 0 ? (
             <ul className="search-results">
               {searchResults
