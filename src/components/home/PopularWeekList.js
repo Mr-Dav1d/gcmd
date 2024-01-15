@@ -102,12 +102,15 @@ function MovieCardSquare({
   let navigate = useNavigate();
 
   return (
-    <div
-      className="movie-card-square"
-      onClick={() => navigate(`/gcmd/movie/${id}`)}
-    >
+    <div className="movie-card-square">
       <div className="poster-square">
-        <img className="star" src={link} alt="poster" />
+        <img
+          className="star"
+          src={link}
+          alt="poster"
+          onClick={() => navigate(`/gcmd/movie/${id}`)}
+          style={{ cursor: "pointer" }}
+        />
         <div className="card-info-square">
           <h3>{title}</h3>
           <h4>{genreNames.join(", ")}</h4>

@@ -51,6 +51,77 @@ button {
   height: auto;
 }
 
+.search-input {
+  position: fixed;
+  top: 6vw;
+  bottom: 6vw;
+  left: 25%;
+  z-index: 2;
+  color: white;
+  background-color: rgb(0, 0, 0);
+  width: 50%;
+  height: 80%;
+  overflow-y: auto;
+  border-radius: 20px;
+}
+
+.search-input::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.search-input input {
+  width: 50%;
+  background-color: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  text-align: center;
+  margin: 0 25%;
+}
+
+.search-results {
+  width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.search-results::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.search-results ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-results li {
+  display: flex;
+  margin: 0px auto;
+  margin-bottom: 50px;
+  font-size: 1vw;
+  width: 80%;
+  gap: 10px;
+}
+
+.search-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.search-poster {
+  width: 200px;
+  height: auto;
+  object-fit: cover;
+}
+
 .banner-div {
   z-index: 1;
   width: 100%;
@@ -384,6 +455,11 @@ button {
   margin-right: 60px;
 }
 
+.search-gif {
+  width: 80%;
+  height: auto;
+}
+
 @media (max-width: 1000px) {
   .nav-bar {
     height: 8vw;
@@ -413,6 +489,23 @@ button {
     width: 100%;
     font-size: 1.3vw;
   }
+
+  .search-input {
+    top: 8vw;
+    bottom: 8vw;
+    left: 20%;
+    color: white;
+    width: 60%;
+    height: 80%;
+  }
+
+  .search-poster {
+    width: 100px;
+  }
+
+  /* .search-gif {
+    height: 200px;
+  } */
 }
 
 @media (max-width: 700px) {
@@ -465,6 +558,19 @@ button {
   .movie-card {
     width: 300px;
     margin-right: 60px;
+  }
+
+  .search-poster {
+    width: 80px;
+  }
+
+  .search-results li {
+    font-size: 1.4vw;
+    width: 80%;
+  }
+
+  .search-results li {
+    width: 95%;
   }
 }
 

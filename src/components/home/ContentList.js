@@ -88,12 +88,15 @@ function ContentCard({
     .filter((genre) => genre !== "");
 
   return (
-    <div
-      className="content-card"
-      onClick={() => navigate(`/gcmd/${contentType}/${id}`)}
-    >
+    <div className="content-card">
       <div className="poster-content">
-        <img className="content-img" src={link} alt="poster" />
+        <img
+          className="content-img"
+          src={link}
+          alt="poster"
+          onClick={() => navigate(`/gcmd/${contentType}/${id}`)}
+          style={{ cursor: "pointer" }}
+        />
         <div className="card-info-content">
           <h3>{title}</h3>
           <div style={{ display: "flex", gap: "10px", marginBottom: "30px" }}>

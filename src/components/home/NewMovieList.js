@@ -69,7 +69,11 @@ function MovieCard({ link, title, rating, genreIds, genres, id }) {
   let navigate = useNavigate();
 
   return (
-    <div className="movie-card" onClick={() => navigate(`/gcmd/movie/${id}`)}>
+    <div
+      className="movie-card"
+      onClick={() => navigate(`/gcmd/movie/${id}`)}
+      style={{ cursor: "pointer" }}
+    >
       <div className="poster">
         <img src={link} alt="poster" />
       </div>

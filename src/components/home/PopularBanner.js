@@ -70,6 +70,23 @@ export default function TopHome() {
 
   const currentMovie = topData[currentIndex];
 
+  const addToWatchlist = () => {
+    const existingWatchlist =
+      JSON.parse(localStorage.getItem("watchlist")) || [];
+
+    const isAlreadyInWatchlist = existingWatchlist.some(
+      (item) => item.id === currentMovie.id
+    );
+
+    if (!isAlreadyInWatchlist) {
+      const updatedWatchlist = [...existingWatchlist, currentMovie];
+      localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
+      alert("Added to watchlist!");
+    } else {
+      alert("This movie is already in your watchlist.");
+    }
+  };
+
   return (
     <div className="banner-div">
       <AnimatePresence mode="wait">
@@ -90,7 +107,11 @@ export default function TopHome() {
           <div className="banner-gradient"></div>
         </motion.div>
       </AnimatePresence>
-      <InfoComponent info={currentMovie} trailerLink={trailerLink} />
+      <InfoComponent
+        info={currentMovie}
+        trailerLink={trailerLink}
+        addToWatchlist={addToWatchlist}
+      />
       <DotsDivComponent
         totalDots={topData.length}
         onSelectDot={(index) => {
@@ -103,7 +124,7 @@ export default function TopHome() {
   );
 }
 
-function InfoComponent({ info, trailerLink }) {
+function InfoComponent({ info, trailerLink, addToWatchlist }) {
   return (
     <div className="info-div">
       <h1>{info.title}</h1>
@@ -124,7 +145,12 @@ function InfoComponent({ info, trailerLink }) {
             Watch Trailer
           </Button>
         )}
-        <Button borderColor="white" logo="watchlist" classN="info-button">
+        <Button
+          borderColor="white"
+          logo="watchlist"
+          classN="info-button"
+          onClick={addToWatchlist}
+        >
           Add to watchlist
         </Button>
       </div>
