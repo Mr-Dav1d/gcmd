@@ -41,11 +41,12 @@ export default function NavBar() {
     setSearchOpen(false);
     setSearchResults([]);
     navigate(`/gcmd/${media_type}/${id}`);
-    window.location.reload();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    //below code doesnt work on github pages
+    // window.location.reload();
+    // window.scrollTo({
+    //   top: 0,
+    //   behavior: "smooth",
+    // });
   };
 
   return (
