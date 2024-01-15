@@ -39,8 +39,8 @@ export default function NavBar() {
   const handleResultClick = (id, media_type) => {
     console.log("Clicked on result with ID:", id);
     setSearchOpen(false);
-    navigate(`/gcmd/${media_type}/${id}`);
     setSearchResults([]);
+    navigate(`/gcmd/${media_type}/${id}`);
     window.location.reload();
     window.scrollTo({
       top: 0,
