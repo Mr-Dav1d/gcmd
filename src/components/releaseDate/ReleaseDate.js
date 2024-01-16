@@ -17,7 +17,6 @@ export default function ReleaseDate() {
         const totalPages = 4;
 
         const promises = monthsToFetch.map((month) => {
-          // Calculate the end of the current month
           const endOfMonth = new Date(currentYear, month, 0);
 
           return Promise.all(
@@ -31,7 +30,6 @@ export default function ReleaseDate() {
               ).then((response) => response.json())
             )
           ).then((pagesData) => {
-            // Concatenate results from all pages
             const allMovies = pagesData.reduce(
               (acc, currentPage) => acc.concat(currentPage.results),
               []
@@ -111,7 +109,6 @@ function MonthComponent({ month, upcomingMovies, IMG_PATH }) {
       return releaseDateA - releaseDateB;
     })
     .filter((movie) => {
-      // Check for valid backdrop_path
       if (movie.backdrop_path && !movie.backdrop_path.includes("null")) {
         return true;
       }

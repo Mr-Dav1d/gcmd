@@ -314,6 +314,7 @@ button {
   width: 500px;
   margin-right: 90px;
   color: white;
+  position: relative;
 }
 
 .poster-square {
@@ -461,10 +462,10 @@ button {
 }
 
 .banner-release {
-  max-height: 70vh;
+  max-height: 65vh;
   width: 100%;
   display: block;
-  filter: brightness(0.5);
+  filter: brightness(0.3);
   object-fit: cover;
 }
 
@@ -520,7 +521,158 @@ button {
   border-radius: 20px;
 }
 
+.watch-list-desktop {
+  margin: 0 25%;
+  display: flex;
+}
+
+.watch-list-mobile {
+  display: none;
+}
+
+.list-movies {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  border-right: 2px solid rgba(255, 255, 255, 0.518);
+}
+
+.delete-button {
+  position: absolute;
+  right: 5%;
+  top: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 50px;
+  color: white;
+  font-size: 1vw;
+}
+
+.movie-card-watchlist {
+  display: inline-block;
+  height: auto;
+  width: 500px;
+  margin-right: 90px;
+  color: white;
+  position: relative;
+}
+
+.watchlist-poster {
+  width: 30%;
+  height: auto;
+  border-radius: 15px;
+}
+
+.watchList-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: start;
+  width: 100%;
+  height: auto;
+  color: white;
+  margin-left: 50px;
+}
+
+.watchList-info h3 {
+  font-size: 20px;
+  width: 100%;
+  text-align: start;
+  text-wrap: wrap;
+}
+
+.watchList-info h4 {
+  color: rgba(255, 255, 255, 0.644);
+  font-size: 17px;
+  margin: 0;
+}
+
+.watchList-info p {
+  font-size: 15px;
+  text-wrap: wrap;
+}
+
+.addition {
+  width: 30%;
+  margin-left: 20px;
+}
+
+.footer {
+  position: relative;
+  text-wrap: wrap;
+  border-top: 2px solid rgba(255, 255, 255, 0.518);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+  padding-bottom: 50px;
+  margin-top: 50px;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url(https://i.redd.it/4fxxbm4opjd31.jpg);
+  background-size: cover;
+  filter: brightness(0.2);
+  z-index: -1;
+}
+
+.footer-info h1 {
+  width: 50%;
+}
+.footer-info p {
+  color: rgba(255, 255, 255, 0.518);
+}
+
+.footer-info a {
+  color: rgba(255, 255, 255, 0.566);
+}
+
+.footer-gif {
+  height: 100%;
+  width: auto;
+}
+
+@media (max-width: 1500px) {
+  .watch-list-desktop {
+    margin: 0 20%;
+  }
+}
+
+@media (max-width: 1300px) {
+  .watch-list-desktop {
+    margin: 0 15%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .watch-list-desktop {
+    margin: 0 10%;
+  }
+}
+
 @media (max-width: 1000px) {
+  .watch-list-desktop {
+    margin: 0 5%;
+  }
+
+  .delete-button {
+    font-size: 1.5vw;
+  }
+
+  .list-movies {
+    width: 80%;
+  }
+  .addition {
+    width: 20%;
+  }
+
   .nav-bar {
     height: 8vw;
   }
@@ -561,6 +713,20 @@ button {
 
   .search-poster {
     width: 100px;
+  }
+
+  .footer {
+    flex-direction: column;
+  }
+
+  .footer-info {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+  }
+  .footer-info h1 {
+    text-align: center;
   }
 }
 
@@ -642,6 +808,39 @@ button {
   .release-poster {
     width: 40vw;
   }
+
+  .watchlist-align {
+    margin: 0 auto;
+  }
+
+  .watch-list-mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .watch-list-desktop {
+    display: none;
+  }
+
+  .list-movies {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    border-right: 0px;
+  }
+
+  .addition {
+    width: 100%;
+    text-align: center;
+  }
+
+  .delete-button {
+    font-size: 2vw;
+  }
 }
 
 @media (max-width: 550px) {
@@ -670,6 +869,30 @@ button {
     align-items: center;
     width: 90%;
     margin-left: 0px;
+  }
+
+  .movie-card-watchlist {
+    flex-direction: column;
+    width: 100%;
+  }
+  .watchList-info {
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    text-align: center;
+    margin: 0;
+  }
+  .watchlist-poster {
+    width: 50%;
+    align-self: center;
+  }
+  .watchList-info h3 {
+    text-align: center;
+  }
+
+  .delete-button {
+    font-size: 5vw;
   }
 }
 

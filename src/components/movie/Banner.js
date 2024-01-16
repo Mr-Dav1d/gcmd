@@ -5,20 +5,16 @@ export default function Banner({ mediaDetails, trailerKey }) {
   const IMG_PATH = "https://image.tmdb.org/t/p/w1280/";
 
   const addToWatchlist = () => {
-    // Retrieve existing watchlist from local storage
     const existingWatchlist =
       JSON.parse(localStorage.getItem("watchlist")) || [];
 
-    // Check if the current content is already in the watchlist
     const isAlreadyInWatchlist = existingWatchlist.some(
       (item) => item.id === mediaDetails.id
     );
 
     if (!isAlreadyInWatchlist) {
-      // Add the current content to the watchlist
       const updatedWatchlist = [...existingWatchlist, mediaDetails];
 
-      // Update local storage with the updated watchlist
       localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
 
       alert("Added to watchlist!");

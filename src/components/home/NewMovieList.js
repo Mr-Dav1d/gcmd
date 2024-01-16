@@ -29,7 +29,7 @@ export default function NewMovieList({ id }) {
 
     const fetchData = async () => {
       try {
-        await fetchGenres(); // Fetch genres first
+        await fetchGenres();
         const response = await axios.get(API_URL_NEW);
         setMovies(response.data.results);
       } catch (error) {

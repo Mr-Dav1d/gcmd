@@ -22,7 +22,7 @@ export default function NavBar() {
     control,
     handleSubmit,
     formState: { errors },
-    reset, // Add the reset function
+    reset,
   } = useForm({
     resolver: yupResolver(schema),
   });
@@ -55,7 +55,7 @@ export default function NavBar() {
   const handleResultClick = (id, media_type) => {
     console.log("Clicked on result with ID:", id);
     setSearchOpen(false);
-    reset(); // Reset the form when a result is clicked
+    reset();
     navigate(`/gcmd/${media_type}/${id}`);
   };
   return (
@@ -189,9 +189,8 @@ function Navigation() {
     <>
       <div className="navigation desktop">
         <Button routeName="/">Home</Button>
-        <Button routeName="/discover">Discover</Button>
         <Button routeName="/ReleaseDate">Movie Release</Button>
-        <Button routeName="/test">Test</Button>
+        <Button routeName="/WatchList">WatchList</Button>
         <Button routeName="/about">About</Button>
       </div>
 
@@ -217,9 +216,8 @@ function MobileNavigation({ routeName }) {
       {isDropdownVisible && (
         <div className="mobile-dropdown">
           <Button routeName="/">Home</Button>
-          <Button routeName="/discover">Discover</Button>
           <Button routeName="/ReleaseDate">Movie Release</Button>
-          <Button routeName="/test">Test</Button>
+          <Button routeName="/WatchList">WatchList</Button>
           <Button routeName="/about">About</Button>
         </div>
       )}

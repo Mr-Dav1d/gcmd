@@ -4,7 +4,8 @@ import Home from "./components/home/Home.js";
 import NavBar from "./components/NavBar.js";
 import Movie from "./components/movie/Movie.js";
 import ReleaseDate from "./components/releaseDate/ReleaseDate.js";
-import Test from "./components/Test.js";
+import WatchList from "./components/watchlist/WatchList.js";
+import Footer from "./components/Footer.js";
 
 export default function App() {
   return (
@@ -14,8 +15,9 @@ export default function App() {
         <Route path="/gcmd" element={<Home />} />
         <Route path="/gcmd/:type/:id" element={<Movie />} />
         <Route path="/gcmd/ReleaseDate" element={<ReleaseDate />} />
-        <Route path="/gcmd/test" element={<Test />} />
+        <Route path="/gcmd/WatchList" element={<WatchList />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

@@ -142,7 +142,6 @@ function ContentCard({
     });
   }
 
-  // Map genre IDs to genre names
   const genreNames = genreIds.map((id) =>
     genres[id] !== undefined ? genres[id] : ""
   );
