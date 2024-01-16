@@ -2,28 +2,25 @@ import React, { useState } from "react";
 import releaseDateBanner from "../../media/releaseDateBanner.jpg";
 import Button from "../Button.js";
 import star from "../../media/star.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function Test() {
-  // Extract movies from local storage
   const [watchlist, setWatchlist] = useState(
     JSON.parse(localStorage.getItem("watchlist")) || []
   );
 
   const handleDelete = (index) => {
-    // Create a copy of the watchlist array
     const updatedWatchlist = [...watchlist];
 
-    // Remove the movie at the specified index
     updatedWatchlist.splice(index, 1);
 
-    // Update state and localStorage
     setWatchlist(updatedWatchlist);
     localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
   };
 
   return (
     <>
-      <div className="banner-div">
+      <div className="banner-div" style={{ marginBottom: "50px" }}>
         <div className="banner-container">
           <img
             className="banner-release"
@@ -34,9 +31,7 @@ export default function Test() {
         </div>
         <div className="info-div">
           <h1>Your Watchlist</h1>
-          <p style={{ color: "rgba(255, 255, 255, 0.77)" }}>
-            Warning: movies are stored in your localStorage
-          </p>
+          <p style={{ color: "rgba(255, 255, 255, 0.77)" }}></p>
         </div>
       </div>
       <div className="watch-list-desktop ">
@@ -78,6 +73,8 @@ export default function Test() {
 
 function MovieCardSquare({ movie, onDelete }) {
   const { name, title, overview, vote_average, poster_path } = movie;
+  let navigate = useNavigate();
+  const media_type = movie.seasons ? "tv" : "movie";
 
   return (
     <div className="movie-card-watchlist watchlist-align">
@@ -86,6 +83,7 @@ function MovieCardSquare({ movie, onDelete }) {
           className="watchlist-poster"
           src={`https://image.tmdb.org/t/p/w1280${poster_path}`}
           alt="poster"
+          onClick={() => navigate(`/gcmd/${media_type}/${movie.id}`)}
           style={{ cursor: "pointer" }}
         />
         <div className="watchList-info">

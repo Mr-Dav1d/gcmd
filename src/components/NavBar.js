@@ -195,7 +195,6 @@ function Navigation() {
         <Button routeName="/">Home</Button>
         <Button routeName="/ReleaseDate">Movie Release</Button>
         <Button routeName="/WatchList">WatchList</Button>
-        <Button routeName="/about">About</Button>
       </div>
 
       <div className="navigation mobile">
@@ -222,7 +221,6 @@ function MobileNavigation({ routeName }) {
           <Button routeName="/">Home</Button>
           <Button routeName="/ReleaseDate">Movie Release</Button>
           <Button routeName="/WatchList">WatchList</Button>
-          <Button routeName="/about">About</Button>
         </div>
       )}
     </div>
