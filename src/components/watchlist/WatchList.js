@@ -77,7 +77,7 @@ export default function Test() {
 }
 
 function MovieCardSquare({ movie, onDelete }) {
-  const { title, overview, vote_average, poster_path } = movie;
+  const { name, title, overview, vote_average, poster_path } = movie;
 
   return (
     <div className="movie-card-watchlist watchlist-align">
@@ -89,7 +89,7 @@ function MovieCardSquare({ movie, onDelete }) {
           style={{ cursor: "pointer" }}
         />
         <div className="watchList-info">
-          <h3>{title}</h3>
+          <h3>{title || name}</h3>
           <h4>{overview.slice(0, 100)}</h4>
           <div style={{ display: "flex", gap: "10px" }}>
             <img className="logo" src={star} alt="star" />

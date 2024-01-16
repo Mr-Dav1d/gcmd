@@ -28,9 +28,13 @@ export default function NavBar() {
   });
 
   const toggleSearch = () => {
+    const currentURL = window.location.href;
     setSearchOpen(!isSearchOpen);
+
     if (!isSearchOpen) {
       setSearchResults([]);
+      if (currentURL.includes("movie") || currentURL.includes("tv"))
+        navigate(`/gcmd/`);
     }
   };
 
