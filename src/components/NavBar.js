@@ -218,21 +218,50 @@ function MobileNavigation({ routeName }) {
       </button>
       {isDropdownVisible && (
         <div className="mobile-dropdown">
-          <Button routeName="/">Home</Button>
-          <Button routeName="/ReleaseDate">Movie Release</Button>
-          <Button routeName="/WatchList">WatchList</Button>
+          <Button
+            routeName="/"
+            isDropdownVisible={isDropdownVisible}
+            setDropdownVisible={setDropdownVisible}
+          >
+            Home
+          </Button>
+          <Button
+            routeName="/ReleaseDate"
+            isDropdownVisible={isDropdownVisible}
+            setDropdownVisible={setDropdownVisible}
+          >
+            Movie Release
+          </Button>
+          <Button
+            routeName="/WatchList"
+            isDropdownVisible={isDropdownVisible}
+            setDropdownVisible={setDropdownVisible}
+          >
+            WatchList
+          </Button>
         </div>
       )}
     </div>
   );
 }
 
-function Button({ children, routeName }) {
+function Button({
+  children,
+  routeName,
+  isDropdownVisible,
+  setDropdownVisible,
+}) {
   let navigate = useNavigate();
+  function dropDownClose() {
+    if (isDropdownVisible) {
+      setDropdownVisible(!isDropdownVisible);
+    }
+  }
   return (
     <button
       onClick={() => {
         navigate(`/gcmd${routeName}`);
+        dropDownClose();
       }}
       className="nav-button"
     >
